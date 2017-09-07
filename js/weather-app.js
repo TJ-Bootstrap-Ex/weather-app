@@ -11,8 +11,16 @@ $.ajax({
     }
 
 }).done(function(data){
-    $('#weather').html(data.main.temp);
-console.log(data);
+    let maxTemp = data.main.temp_max;
+    let minTemp = data.main.temp_min;
+    let icon = data.weather[0].icon;
+    let iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+    //
+    $('#weather').html(minTemp + "&#176" + " / " + maxTemp + "&#176");
+    $("#weather").html("<img src='" + iconUrl  + "'>");
+    console.log(data.weather[0].icon);
+
+// console.log(data);
 
     });
 
