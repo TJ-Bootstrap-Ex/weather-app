@@ -2,24 +2,28 @@
 (function () {
 
 $.ajax({
-    url: "http://api.openweathermap.org/data/2.5/weather",
+    url: "http://api.openweathermap.org/data/2.5/forecast",
     type: "GET",
     data: {
         APPID: "34b135188b7c0ee901808521cc501b28",
         q:  "San Antonio, TX",
-        units: "imperial"
+        units: "imperial",
+        cnt: 3
     }
 
 }).done(function(data){
-    let maxTemp = data.main.temp_max;
-    let minTemp = data.main.temp_min;
-    let icon = data.weather[0].icon;
-    let main = data.weather[0].main;
-    let wind = data.wind.speed;
-    let humiidity = data.main.humidity;
-    let pressure = data.main.pressure;
-    let des = data.weather[0].description;
-    let iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+
+    data.forEach(funciton(){
+
+        var maxTemp = data.list.main.temp_max;
+    var minTemp = data.list.main.temp_min;
+    var icon = data.weather[0].icon;
+    var main = data.weather[0].main;
+    var wind = data.wind.speed;
+    var humiidity = data.main.humidity;
+    var pressure = data.main.pressure;
+    var des = data.weather[0].description;
+    var iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
 
     $('#weather').html(minTemp + "&#176" + " / " + maxTemp + "&#176" + "<br>");
     $("#weather").append("<img src='" + iconUrl  + "'>" + "<br>");
@@ -27,6 +31,8 @@ $.ajax({
     $('#weather').append("Humidity: " + humiidity + "<br>");
     $('#weather').append("Wind: " + wind + "<br>");
     $('#weather').append("Pressure: " + pressure + "<br>");
+
+    });
     console.log(data);
 
     });
