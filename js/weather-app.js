@@ -14,11 +14,15 @@ $.ajax({
     let maxTemp = data.main.temp_max;
     let minTemp = data.main.temp_min;
     let icon = data.weather[0].icon;
+    let main = data.weather[0].main;
+    let des = data.weather[0].description;
     let iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
     //
-    $('#weather').html(minTemp + "&#176" + " / " + maxTemp + "&#176");
-    $("#weather").html("<img src='" + iconUrl  + "'>");
-    console.log(data.weather[0].icon);
+    $('#weather').html(minTemp + "&#176" + " / " + maxTemp + "&#176" + "<br>");
+    $("#weather").append("<img src='" + iconUrl  + "'>" + "<br>");
+    $('#weather').append(main + ": " + des + "<br>");
+
+    console.log(data);
 
 // console.log(data);
 
