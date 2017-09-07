@@ -13,6 +13,9 @@ $.ajax({
 
 }).done(function(data){
 
+    var dayStart = "<tr><td>";
+    var day = "";
+    var dayEnd = "</td></tr>";
 
     data.list.forEach(function(el, i){
 
@@ -26,12 +29,25 @@ $.ajax({
     var des = data.list[i].weather[0].description;
     var iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
 
-    $('#weather').append(minTemp + "&#176" + " / " + maxTemp + "&#176" + "<br>");
-    $("#weather").append("<img src='" + iconUrl  + "'>" + "<br>");
-    $('#weather').append(main + ": " + des + "<br>");
-    $('#weather').append("Humidity: " + humiidity + "<br>");
-    $('#weather').append("Wind: " + wind + "<br>");
-    $('#weather').append("Pressure: " + pressure + "<br>");
+
+    // $('#weather').append(minTemp + "&#176" + " / " + maxTemp + "&#176" + "<br>");
+    // $("#weather").append("<img src='" + iconUrl  + "'>" + "<br>");
+    // $('#weather').append(main + ": " + des + "<br>");
+    // $('#weather').append("Humidity: " + humiidity + "<br>");
+    // $('#weather').append("Wind: " + wind + "<br>");
+    // $('#weather').append("Pressure: " + pressure + "<br>");
+
+    day = "<td>" +
+        minTemp + "&#176" + " / " + maxTemp + "&#176" + "<br>" +
+        "<img src=\'" + iconUrl  + "\'>" + "<br>" +
+        main + ": " + des + "<br>" +
+        "Humidity:" + humiidity + "<br>" +
+        "Wind: " + wind + "<br>" +
+        "Pressure: " + pressure + "<br>" +
+        "</td>";
+    $("#weather").append(day);
+
+
 
 
     console.log(maxTemp);
